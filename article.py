@@ -1,5 +1,6 @@
 from flask import Blueprint,request,render_template
 from forms import ArticleForm
+from models import Article,db
 
 bp = Blueprint('article',__name__,url_prefix='/article')
 
@@ -8,7 +9,6 @@ def index():
     return 'Articl Index Page'
 
 
-from models import Article,db
 @bp.route('/<id>',methods=['GET'])
 def return_article():
     article = Article.getTargetArticle(id)

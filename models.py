@@ -1,8 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from datetime import datetime
-from hello import app
+#from hello import app
 
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 class Article(db.Model):
     __tablename__ = 'articles'
@@ -53,3 +54,10 @@ class Article(db.Model):
     def getArticles():
         articles = Article.query.order_by(Article.created_at.desc())
         return articles
+
+class User(UserMixin,db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(64),unique = True)
+    email = db.Column(db.String(120),unique = True)
+    password = db.Column(db.String(64),unique = True)
