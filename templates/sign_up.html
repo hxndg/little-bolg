@@ -1,6 +1,7 @@
-<form method = "POST" action = "/user/signIn">
+<form method = "POST" action = "/user/signUp">
   {{form.csrf_token}}
 <p>username:{{form.username}}<br></p>
 <p>password:{{form.userpass}}<br></p>
+<p>email:{{form.email}}<br></p>
 <input type = "submit" value = "Go">
 </form>

@@ -16,9 +16,9 @@ def return_article():
 
 @bp.route('/add',methods = ['POST','GET'])
 def add_article():
-    if request.methods == 'GET':
+    if request.method == 'GET':
         return render_template('article_add.html')
-    if request.methods == 'POST':
+    if request.method == 'POST':
         form = ArticleForm()
         if form.validate_on_submit():
             new_article = Article(form.title,form.content,g.user)

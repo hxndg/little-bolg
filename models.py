@@ -5,6 +5,8 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+
+
 class Article(db.Model):
     __tablename__ = 'articles'
 
@@ -61,3 +63,17 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(64),unique = True)
     email = db.Column(db.String(120),unique = True)
     password = db.Column(db.String(64),unique = True)
+
+    def __init__(self,username,email,password):
+        self.username = username
+        self.email = email
+        self.password = password
+
+    def create(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception,e:
+            print e
+            return 'error'
+        return 'success'

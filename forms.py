@@ -10,3 +10,8 @@ class ArticleForm(FlaskForm):
 class UserForm(FlaskForm):
     username = StringField('username',validators = [DataRequired()])
     userpass = StringField('password',validators = [DataRequired()])
+
+class SignUpForm(FlaskForm):
+    username = StringField('username',validators = [DataRequired()])
+    userpass = StringField('password',validators = [DataRequired()])
+    email = StringField('email',validators=[DataRequired()])
