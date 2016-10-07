@@ -1,0 +1,6 @@
+<form method = "POST" action = "/article/add">
+  {{form.csrf_token}}
+<p>title:{{form.title}}<br></p>
+<p>content:{{form.content}}<br></p>
+<input type = "submit" value = "Go">
+</form>

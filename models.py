@@ -5,6 +5,26 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+class User(UserMixin,db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(64),unique = True)
+    email = db.Column(db.String(120),unique = True)
+    password = db.Column(db.String(64),unique = True)
+
+    def __init__(self,username,email,password):
+        self.username = username
+        self.email = email
+        self.password = password
+
+    def create(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception,e:
+            print e
+            return 'error'
+        return 'success'
 
 
 class Article(db.Model):
@@ -14,11 +34,12 @@ class Article(db.Model):
     title = db.Column(db.String(100))
     content = db.Column(db.Text)
     created_at = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
 
-    def __init__(self,title,content,user):
+    def __init__(self,title,content,user_id):
         self.title = title
         self.content = content
-        self.user = user
+        self.user_id = user_id
 
     def gen_time(self):
         if self.created_at is None:
@@ -56,24 +77,3 @@ class Article(db.Model):
     def getArticles():
         articles = Article.query.order_by(Article.created_at.desc())
         return articles
-
-class User(UserMixin,db.Model):
-    __tablename__ = 'user'
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(64),unique = True)
-    email = db.Column(db.String(120),unique = True)
-    password = db.Column(db.String(64),unique = True)
-
-    def __init__(self,username,email,password):
-        self.username = username
-        self.email = email
-        self.password = password
-
-    def create(self):
-        try:
-            db.session.add(self)
-            db.session.commit()
-        except Exception,e:
-            print e
-            return 'error'
-        return 'success'
