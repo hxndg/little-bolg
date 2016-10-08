@@ -59,4 +59,4 @@ def signOut():
     return 'U have logout'
 
 def go_index():
-    return 'hello world2'
+    return 'hello u have login,do things u wanna do'

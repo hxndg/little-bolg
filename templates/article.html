@@ -1,0 +1,17 @@
+<p>id:{{article.id}}</p>
+<p>create_at:{{article.create_at}}</p>
+<p>title:{{article.title}}<br></p>
+<p>content:{{article.content}}<br></p>
+
+<br>
+<br>
+<br>
+{% for reply in replys %}
+   <li>{{reply.content}}<br></li>
+{% endfor %}
+
+<form method = "POST" action = "/reply/add/{{article.id}}"+>
+  {{form.csrf_token}}
+<p>content:{{form.content}}<br></p>
+<input type = "submit" value = "Go">
+</form>

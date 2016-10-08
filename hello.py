@@ -9,6 +9,7 @@ from models import User
 bps = [
     'article:bp',
     'user:bp',
+    'reply:bp'
 ]
 
 login_manager = LoginManager()
