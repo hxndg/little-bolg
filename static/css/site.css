@@ -1,0 +1,39 @@
+.content-max-width {
+    max-width: 900px;
+    margin: auto;
+    padding-bottom: 120px;
+}
+
+.form-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-sign-in {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.page-content {
+    height: auto;
+    min-height: 100%;
+}
+
+.footer {
+    clear: both;
+    height: 40px;
+    margin-top: -104px;
+    position: relative;
+    z-index: 10;
+}
+
+.sign-tips-message {
+    margin-top: 10px;
+    text-align: left;
+    color: #ff3d00;
+}
+
+.sign-tips-message .message:before {
+    content: '* ';
+}

@@ -34,7 +34,7 @@ def signIn():
                     flash('Password Wrong','danager')
             else:
                 flash('No Such User','danager')
-    return render_template('sign_in.html',form = form )
+    return render_template('sign_in.html',form = form)
 
 
 @bp.route('/signUp',methods = ['GET','POST'])

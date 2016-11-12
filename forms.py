@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextField,IntegerField
+from wtforms import StringField,TextField,IntegerField,PasswordField
 from wtforms.validators import DataRequired
 
 class ArticleForm(FlaskForm):
@@ -9,11 +9,12 @@ class ArticleForm(FlaskForm):
 
 class UserForm(FlaskForm):
     username = StringField('username',validators = [DataRequired()])
-    userpass = StringField('password',validators = [DataRequired()])
+    userpass = PasswordField('password',validators = [DataRequired()])
 
 class SignUpForm(FlaskForm):
     username = StringField('username',validators = [DataRequired()])
-    userpass = StringField('password',validators = [DataRequired()])
+    userpass = PasswordField('password',validators = [DataRequired()])
+    reuserpass = PasswordField('repassword',validators = [DataRequired()])
     email = StringField('email',validators=[DataRequired()])
 
 class ReplyForm(FlaskForm):
