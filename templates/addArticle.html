@@ -1,6 +1,23 @@
-<form method = "POST" action = "/article/add">
-  {{form.csrf_token}}
-<p>title:{{form.title}}<br></p>
-<p>content:{{form.content}}<br></p>
-<input type = "submit" value = "Go">
-</form>
+{% extends "layout.html" %}
+{% block title %}addArticle{% endblock %}
+{% block body %}
+    <form method="POST" action="/article/add" style="width: 100%;">
+        <div class="form-vertical">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-item">
+                {{ form.title(class_='mdl-textfield__input') }}
+                <label class="mdl-textfield__label" for="titile">Title</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                {{ form.content(class_='mdl-textfield__input') }}
+                <label class="mdl-textfield__label" for="content">Content</label>
+            </div>
+            {{ form.csrf_token }}
+            <div class="form-item">
+                <button type="submit"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Go
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
