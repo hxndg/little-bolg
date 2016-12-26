@@ -1,6 +1,36 @@
-<form method = "POST" action = "/user/signIn">
-  {{form.csrf_token}}
-<p>username:{{form.username}}<br></p>
-<p>password:{{form.userpass}}<br></p>
-<input type = "submit" value = "Go">
-</form>
+{% extends "layout.html" %}
+{% block title %}SignIn{% endblock %}
+{% block body %}
+    <div class="content-sign-in">
+        <h3>Sign In</h3>
+        <form method="POST" action="/user/signIn">
+            <div class="form-vertical">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-item">
+                    {{ form.username(class_='mdl-textfield__input') }}
+                    <label class="mdl-textfield__label" for="username">Username</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-item">
+                    {{ form.userpass(class_='mdl-textfield__input') }}
+                    <label class="mdl-textfield__label" for="password">Password</label>
+                </div>
+                {{ form.csrf_token }}
+                <div class="form-item">
+                    <button type="submit"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Go
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="sign-tips-message">
+                    {% for msg in messages %}
+                        <div class="message">{{ msg }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+{% endblock %}
